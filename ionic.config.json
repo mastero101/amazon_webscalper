@@ -1,0 +1,7 @@
+{
+  "name": "amazon_webscalper",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
