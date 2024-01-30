@@ -31,6 +31,10 @@ log.txt
 
 # Node
 /node_modules
+/Amazon webscalper CRUD/node_modules
+/Amazon webscalper CRUD/.env
+/Amazon webscalper node/node_modules
+/Amazon webscalper node/.env
 npm-debug.log
 yarn-error.log
 
