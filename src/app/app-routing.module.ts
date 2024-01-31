@@ -1,15 +1,10 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { StockMarketPageModule } from './stock-market/stock-market.module';
 
 const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  { 
-    path: 'stock-market', 
-    loadChildren: () => import('./stock-market/stock-market.module').then( m => m.StockMarketPageModule) 
   },
   {
     path: '',
@@ -19,6 +14,10 @@ const routes: Routes = [
   {
     path: 'stock-market',
     loadChildren: () => import('./stock-market/stock-market.module').then( m => m.StockMarketPageModule)
+  },
+  {
+    path: 'registrar',
+    loadChildren: () => import('./registrar/registrar.module').then( m => m.RegistrarPageModule)
   },
 ];
 

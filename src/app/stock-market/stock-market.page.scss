@@ -25,3 +25,40 @@
   #container a {
     text-decoration: none;
   }
+
+  .data-table {
+    width: 90%;
+    border-collapse: collapse;
+    margin-top: 2vw;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      margin-top: 6vw;
+      margin-left: -2vw;
+  }
+  }
+  
+  .data-table th, .data-table td {
+    border: 2px solid #ddd;
+    padding: 8px;
+  }
+  
+  .data-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .data-table td {
+    text-align: center;
+  }
+  
+  .data-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .price-increase {
+    color: red;
+  }
+  
+  .price-decrease {
+    color: green;
+  }

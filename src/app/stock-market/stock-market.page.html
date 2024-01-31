@@ -1,12 +1,37 @@
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Stock-Market</strong>
-    <p>items Market Prices Here</p>
-  </div>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Items Market Prices Here</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Precio</th>
+            <th>Modelo</th>
+            <th>Tienda</th>
+            <th>URL</th>
+            <th>Imagen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items">
+            <td>{{ item.id }}</td>
+            <td [ngStyle]="{ color: showPriceChange && item.precio < prices[item.id - 1].precio ? 'green' : (showPriceChange && item.precio > prices[item.id - 1].precio ? 'red' : 'black') }">
+              {{ showPriceChange ? prices[item.id - 1].precio : item.precio }}
+            </td>
+            <td>{{ item.modelo }}</td>
+            <td>{{ item.tienda }}</td>
+            <td><a [href]="item.url" target="_blank">Link</a></td>
+            <td><img [src]="item.img" alt="Imagen del artículo" style="max-height: 100px;"></td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-card-content>
+  </ion-card>
+  
 </ion-content>
+
+

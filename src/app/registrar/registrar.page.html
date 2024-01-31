@@ -1,0 +1,31 @@
+<ion-header style="margin-top: 6em; max-width: fit-content; justify-content: center; margin-left: 25%;">
+  <ion-toolbar>
+    <ion-title>Registrar Producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="margin-top: 2em;">
+  <ion-title>Modelo</ion-title>
+    <ion-card>
+      <ion-input [(ngModel)]="modelo"></ion-input>
+    </ion-card>
+  <ion-title>Precio</ion-title>
+    <ion-card>
+      <ion-input type="number" [(ngModel)]="precio"></ion-input>
+    </ion-card>
+  <ion-title>Tienda</ion-title>
+    <ion-card>
+      <ion-input [(ngModel)]="tienda"></ion-input>
+    </ion-card>
+  <ion-title>URL</ion-title>
+    <ion-card>
+      <ion-input [(ngModel)]="url"></ion-input>
+    </ion-card>
+  <ion-title>Imagen URL</ion-title>
+    <ion-card>
+      <ion-input [(ngModel)]="img"></ion-input>  
+    </ion-card>
+    <ion-button expand="block" (click)="registrar()">Registrar</ion-button>
+</ion-content>
+
+

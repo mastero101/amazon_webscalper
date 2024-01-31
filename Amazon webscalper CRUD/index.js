@@ -20,6 +20,13 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
 app.all('/', (req, res) => {
     console.log("Just got a request!");
     res.send('Webscalper Amazon Works');
@@ -37,7 +44,7 @@ app.get('/items', (req, res) => {
 });
 
 app.get('/items/prices', (req, res) => {
-    pool.query("SELECT modelo, precio FROM amazon WHERE precio", (error, results, fields) => {
+    pool.query("SELECT id, precio FROM amazon WHERE precio", (error, results, fields) => {
         if (error) {
             console.error('Error al obtener datos de la base de datos:', error);
             res.status(500).send('Error al obtener datos de la base de datos.');
@@ -76,7 +83,7 @@ app.get('/procesadores', (req, res) => {
     });
 });
 
-app.post('/', (req, res) => {
+app.post('/item', (req, res) => {
     const data = req.body;
     pool.query('INSERT INTO amazon SET ?', data, (error, results, fields) => {
         if (error) {
@@ -84,6 +91,7 @@ app.post('/', (req, res) => {
             res.status(500).send('Error al insertar datos en la base de datos.');
             return;
         }
+	console.log("Item Registrado");
         res.send(results);
     });
 });
