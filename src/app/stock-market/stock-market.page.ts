@@ -24,7 +24,7 @@ export class StockMarketPage implements OnInit {
   
   async getItems() {
     try {
-      const response = await axios.get('http://localhost:3000/items'); // 
+      const response = await axios.get('https://amazon-webscalper-crud.onrender.com/items'); // 
       this.items = response.data;
       console.log(this.items); 
     } catch (error) {
@@ -34,7 +34,7 @@ export class StockMarketPage implements OnInit {
 
   async getPrices() {
     try {
-      const response = await axios.get('http://localhost:3000/items/prices');
+      const response = await axios.get('https://amazon-webscalper-crud.onrender.com/items/prices');
       const newPrices = response.data;
       this.updateItemPrices(newPrices);
       console.log(newPrices);

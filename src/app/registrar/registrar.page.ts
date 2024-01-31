@@ -28,7 +28,7 @@ export class RegistrarPage implements OnInit {
         url: this.url,
         img: this.img
       };
-      await axios.post('http://localhost:3000/item', data);
+      await axios.post('https://amazon-webscalper-crud.onrender.com/item', data);
       console.log('Datos registrados correctamente');
     } catch (error) {
       console.error('Error al registrar los datos:', error);
