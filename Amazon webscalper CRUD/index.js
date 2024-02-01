@@ -10,7 +10,7 @@ const dbConfig = {
     password: process.env.PASSWORD,
     database: process.env.DATABASE,
     port: 3306,
-    ssl: false
+    ssl: true
 };
 
 const pool = mysql.createPool(dbConfig);
@@ -121,7 +121,7 @@ app.delete('/:id', (req, res) => {
     });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORTSERVICE || 3000;
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
