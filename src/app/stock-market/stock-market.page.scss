@@ -26,15 +26,19 @@
     text-decoration: none;
   }
 
-  .data-table {
-    width: 90%;
-    border-collapse: collapse;
+  .table-container {
+    overflow-x: auto;
     margin-top: 2vw;
-    @media screen and (max-width: 768px) {
-      width: 100%;
-      margin-top: 6vw;
-      margin-left: -2vw;
+    width: calc(100% + 4vw);
+    margin-left: -2vw; 
+    margin-right: -2vw; 
   }
+  
+  .data-table {
+    margin-top: 4vw;
+    width: 90%;
+    overflow-x: auto;
+    border-collapse: collapse;
   }
   
   .data-table th, .data-table td {
