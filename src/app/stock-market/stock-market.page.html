@@ -24,10 +24,20 @@
             <td>{{ item.modelo }}</td>
             <td>{{ item.tienda }}</td>
             <td><a [href]="item.url" target="_blank">Link</a></td>
-            <td><img [src]="item.img" alt="Imagen del artículo" style="max-height: 100px;"></td>
+            <td><img [src]="item.img" alt="Imagen del artículo" style="max-height: 100px;" (click)="openImage(item.img)"></td>
           </tr>
         </tbody>
       </table>
     </div>
   </ion-card>
 </ion-content>
+
+<div *ngIf="selectedImage" id="imageModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img [src]="selectedImage" alt="Imagen Ampliada" style="width: 100%;" (click)="closeImage()">
+      </div>
+    </div>
+  </div>
+</div>

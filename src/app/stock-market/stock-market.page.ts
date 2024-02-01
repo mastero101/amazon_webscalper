@@ -8,6 +8,7 @@ import axios from 'axios';
 })
 export class StockMarketPage implements OnInit {
   showPriceChange = false;
+  selectedImage: string | null = null;
   items: any[] = [];
   prices: any[] = [];
 
@@ -58,5 +59,13 @@ export class StockMarketPage implements OnInit {
       }
     });
     this.prices = newPrices;
+  }
+
+  openImage(imageUrl: string) {
+    this.selectedImage = imageUrl;
+  }
+  
+  closeImage() {
+    this.selectedImage = null;
   }
 }
