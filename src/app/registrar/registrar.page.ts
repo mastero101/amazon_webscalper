@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import axios from 'axios';
 
 @Component({
@@ -7,27 +9,41 @@ import axios from 'axios';
   styleUrls: ['./registrar.page.scss'],
 })
 export class RegistrarPage implements OnInit {
-  modelo: string = '';
-  precio: number = 0;
-  tienda: string = '';
-  url: string = '';
-  img: string = '';
+  formulario: FormGroup;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { 
+    this.formulario = this.formBuilder.group({
+      modelo: [''],
+      precio: [''],
+      tienda: [''],
+      url: [''],
+      img: ['']
+    });
+  }
 
   // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {
+    this.inicializarFormulario();
+  }
+
+  inicializarFormulario() {
+    this.formulario = this.formBuilder.group({
+      modelo: ['', Validators.required],
+      precio: [0, [Validators.required, Validators.min(0)]],
+      tienda: ['', Validators.required],
+      url: ['', [Validators.required, Validators.pattern('https?://.+')]],
+      img: ['', Validators.required],
+    });
   }
 
   async registrar() {
+    if (this.formulario.invalid) {
+      alert('Por favor, complete todos los campos correctamente.');
+      return;
+    }
+
     try {
-      const data = {
-        modelo: this.modelo,
-        precio: this.precio,
-        tienda: this.tienda,
-        url: this.url,
-        img: this.img
-      };
+      const data = this.formulario.value;
       await axios.post('https://amazon-webscalper-crud.onrender.com/item', data);
       console.log('Datos registrados correctamente');
     } catch (error) {
