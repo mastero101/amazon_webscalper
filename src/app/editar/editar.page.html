@@ -1,0 +1,48 @@
+<ion-header style="margin-top: 25vw; margin-bottom: 5vw;">
+  <ion-toolbar>
+    <ion-title style="text-align: center;">Editar Datos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-select placeholder="Seleccionar item" style="margin-left: 35vw; margin-bottom: 5vw;" (ionChange)="onItemChange($event)">
+    <ion-select-option *ngFor="let item of items" [value]="item"> 
+      {{ item.id + " -" }}
+      {{ item.modelo }}
+    </ion-select-option>
+  </ion-select>
+  
+  <form [formGroup]="registroForm" (ngSubmit)="guardar()">
+    <ion-title>ID</ion-title>
+    <ion-card>
+      <ion-input formControlName="id" type="text" [readonly]="true"></ion-input>
+    </ion-card>
+
+    <ion-title>Modelo</ion-title>
+    <ion-card>
+      <ion-input formControlName="modelo" type="text"></ion-input>
+    </ion-card>
+
+    <ion-title>Precio</ion-title>
+    <ion-card>
+      <ion-input formControlName="precio" type="number"></ion-input>
+    </ion-card>
+    
+    <ion-title>Tienda</ion-title>
+    <ion-card>
+      <ion-input formControlName="tienda" type="text"></ion-input>
+    </ion-card>
+
+    <ion-title>URL</ion-title>
+    <ion-card>
+      <ion-input formControlName="url" type="url"></ion-input>
+    </ion-card>
+    
+    <ion-title>URL Imagen</ion-title>
+    <ion-card>
+      <ion-input formControlName="img" type="url"></ion-input>
+    </ion-card>
+
+    <ion-button expand="block" type="submit">Guardar Cambios</ion-button>
+  </form>
+</ion-content>
