@@ -69,4 +69,28 @@ export class EditarPage implements OnInit {
     } 
   }
 
+  eliminar() {
+    const id = this.registroForm.value.id;
+    
+    // Mostrar cuadro de confirmación
+    const confirmacion = window.confirm('¿Estás seguro de que deseas eliminar este artículo?');
+    
+    if (confirmacion) {
+      // Si el usuario confirma, realizar eliminación
+      axios.delete(`https://amazon-webscalper-crud.onrender.com/${id}`)
+        .then(() => {
+          console.log('Datos eliminados correctamente');
+          alert('Artículo eliminado');
+          // Actualizar la lista de elementos si es necesario
+          this.getItems();
+        })
+        .catch((error) => {
+          console.error('Error al eliminar los datos:', error);
+        });
+    } else {
+      // Si el usuario cancela, no hacer nada
+      console.log('Eliminación cancelada por el usuario');
+    }
+  }
+
 }

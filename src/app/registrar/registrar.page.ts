@@ -45,7 +45,9 @@ export class RegistrarPage implements OnInit {
     try {
       const data = this.formulario.value;
       await axios.post('https://amazon-webscalper-crud.onrender.com/item', data);
-      console.log('Datos registrados correctamente');
+        console.log('Datos registrados correctamente');
+        alert("Articulo registrados correctamente");
+      this.formulario.reset();
     } catch (error) {
       console.error('Error al registrar los datos:', error);
     }
