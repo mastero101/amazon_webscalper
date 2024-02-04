@@ -1,0 +1,11 @@
+.registrar-header {
+    margin-top: 6em; 
+    max-width: fit-content; 
+    justify-content: center; 
+    margin-left: 25%;
+    @media screen and (min-width: 900px) {
+        margin-left: 40%;
+        margin-top: 6em;
+        
+    }
+}

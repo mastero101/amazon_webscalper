@@ -1,11 +1,11 @@
-<ion-header style="margin-top: 25vw; margin-bottom: 5vw;">
+<ion-header class="editar-header">
   <ion-toolbar>
     <ion-title style="text-align: center;">Editar Datos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-select placeholder="Seleccionar item" style="margin-left: 35vw; margin-bottom: 5vw;" (ionChange)="onItemChange($event)">
+  <ion-select placeholder="Seleccionar item" style="margin-left: 3vw; margin-bottom: 5vw;" (ionChange)="onItemChange($event)">
     <ion-select-option *ngFor="let item of items" [value]="item"> 
       {{ item.id + " -" }}
       {{ item.modelo }}

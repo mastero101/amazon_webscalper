@@ -32,6 +32,10 @@
     width: calc(100% + 4vw);
     margin-left: -2vw; 
     margin-right: -2vw; 
+    @media screen and (min-width: 900px) {
+        margin-left: 2vw;
+        margin-top: -2vw;
+    }
   }
   
   .data-table {
