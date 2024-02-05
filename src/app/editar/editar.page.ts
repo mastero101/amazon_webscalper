@@ -10,6 +10,7 @@ import axios from 'axios';
 export class EditarPage implements OnInit {
   registroForm: FormGroup;
   items: any[] = [];
+  modelo: string = '';
 
   constructor(private formBuilder: FormBuilder) {
     this.registroForm = this.formBuilder.group({
@@ -93,4 +94,30 @@ export class EditarPage implements OnInit {
     }
   }
 
+  buscar() {
+    axios.get(`https://amazon-webscalper-crud.onrender.com/models/${this.modelo}`)
+      .then((response) => {
+        if (response.data) {
+          const item = response.data;
+  
+          this.registroForm.patchValue({
+            id: item.id,
+            modelo: item.modelo,
+            precio: item.precio,
+            tienda: item.tienda,
+            url: item.url,
+            img: item.img
+          });
+  
+          console.log('Elemento encontrado:', item.modelo);
+        } else {
+          alert('No se encontró el elemento');
+        }
+      })
+      .catch((error) => {
+        console.error('Error al buscar el elemento:', error);
+      });
+  }
+  
+  
 }

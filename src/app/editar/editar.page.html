@@ -11,6 +11,12 @@
       {{ item.modelo }}
     </ion-select-option>
   </ion-select>
+
+  <ion-card>
+    <ion-input type="text" id="busqueda" [(ngModel)]="modelo"></ion-input>
+  </ion-card>
+  <ion-button mat-raised-button color="primary" (click)="buscar()">Buscar</ion-button>
+      
   
   <form [formGroup]="registroForm" (ngSubmit)="guardar()">
     <ion-title>ID</ion-title>
