@@ -30,7 +30,7 @@
     margin-top: 6em; 
     max-width: fit-content; 
     justify-content: center; 
-    margin-left: 35%;
+    margin-left: 32%;
     margin-bottom: 2em;
     @media screen and (min-width: 900px) {
         margin-left: 40%;
@@ -42,6 +42,34 @@
     margin-bottom: 2vw;
   }
 
+  ion-input[type="text"] {
+    white-space: pre-wrap; /* Permite saltos de línea y espacios */
+    word-wrap: break-word; /* Permite que las palabras se rompan en múltiples líneas */
+    max-height: 3em; /* Altura máxima para mostrar hasta 3 líneas de texto */
+    overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
+  }
+
   ion-text {
     margin-top: 2vw;
+  }
+
+  ion-searchbar {
+    margin-bottom: 5vw;
+    @media screen and (min-width: 900px) {
+      margin-bottom: 1vw;
+      margin-top: -5vw;
+  }
+  }
+
+  ion-img {
+    max-width: 50%; 
+    max-height: 60%;
+    margin: 10px;
+  }
+
+  ion-card.imgShow {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin: 30px;
   }

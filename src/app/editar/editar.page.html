@@ -12,13 +12,14 @@
     </ion-select-option>
   </ion-select>
 
-  <ion-card>
-    <ion-input type="text" id="busqueda" [(ngModel)]="modelo"></ion-input>
-  </ion-card>
-  <ion-button mat-raised-button color="primary" (click)="buscar()">Buscar</ion-button>
+  <ion-searchbar [(ngModel)]="modelo" (ionChange)="buscar()" showCancelButton="never" placeholder="Buscar"></ion-searchbar>
       
-  
   <form [formGroup]="registroForm" (ngSubmit)="guardar()">
+
+    <ion-card *ngIf="imgSrc" class="imgShow">
+      <ion-img [src]="imgSrc"></ion-img>
+    </ion-card>
+
     <ion-title>ID</ion-title>
     <ion-card>
       <ion-input formControlName="id" type="text" [readonly]="true"></ion-input>
@@ -26,7 +27,7 @@
 
     <ion-title>Modelo</ion-title>
     <ion-card>
-      <ion-input formControlName="modelo" type="text"></ion-input>
+      <ion-textarea formControlName="modelo"></ion-textarea>
     </ion-card>
 
     <ion-title>Precio</ion-title>
@@ -41,12 +42,12 @@
 
     <ion-title>URL</ion-title>
     <ion-card>
-      <ion-input formControlName="url" type="url"></ion-input>
+      <ion-textarea formControlName="url" type="url"></ion-textarea>
     </ion-card>
     
     <ion-title>URL Imagen</ion-title>
     <ion-card>
-      <ion-input formControlName="img" type="url"></ion-input>
+      <ion-textarea formControlName="img" type="url"></ion-textarea>
     </ion-card>
 
     <ion-button type="submit" expand="block" class="ion-margin">Guardar Cambios</ion-button>

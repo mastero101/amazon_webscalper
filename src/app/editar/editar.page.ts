@@ -11,6 +11,8 @@ export class EditarPage implements OnInit {
   registroForm: FormGroup;
   items: any[] = [];
   modelo: string = '';
+  resultadoSeleccionado: any;
+  imgSrc: string = '';
 
   constructor(private formBuilder: FormBuilder) {
     this.registroForm = this.formBuilder.group({
@@ -39,6 +41,7 @@ export class EditarPage implements OnInit {
         url: selectedItem.url,
         img: selectedItem.img
       });
+      this.imgSrc = selectedItem.img;
     }
   }
 
@@ -97,8 +100,9 @@ export class EditarPage implements OnInit {
   buscar() {
     axios.get(`https://amazon-webscalper-crud.onrender.com/models/${this.modelo}`)
       .then((response) => {
-        if (response.data) {
-          const item = response.data;
+        if (response.data && response.data.length > 0) {
+          const items = response.data;
+          const item = response.data[0];
   
           this.registroForm.patchValue({
             id: item.id,
@@ -108,8 +112,10 @@ export class EditarPage implements OnInit {
             url: item.url,
             img: item.img
           });
-  
-          console.log('Elemento encontrado:', item.modelo);
+          this.imgSrc = item.img;
+          
+          console.log(items);
+          console.log('Elemento encontrado:', item);
         } else {
           alert('No se encontró el elemento');
         }
@@ -118,6 +124,5 @@ export class EditarPage implements OnInit {
         console.error('Error al buscar el elemento:', error);
       });
   }
-  
   
 }
