@@ -70,3 +70,19 @@
   .price-decrease {
     color: green;
   }
+
+  #pagination {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  #pagination button {
+    margin: 0.5em 10px;
+    vertical-align: middle;
+  }
+  
+  #pagination span {
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: middle;
+  }

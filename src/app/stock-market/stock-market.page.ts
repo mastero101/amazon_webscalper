@@ -11,6 +11,8 @@ export class StockMarketPage implements OnInit {
   selectedImage: string | null = null;
   items: any[] = [];
   prices: any[] = [];
+  currentPage: number = 1;
+  pageSize: number = 10;
 
   constructor() { }
 
