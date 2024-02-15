@@ -13,6 +13,8 @@ export class StockMarketPage implements OnInit {
   prices: any[] = [];
   currentPage: number = 1;
   pageSize: number = 10;
+  searchModel: string = ''; // Modelo de búsqueda
+  itemsToShow: any[] = []; // Elementos a mostrar después de filtrar
 
   constructor() { }
 
@@ -29,6 +31,7 @@ export class StockMarketPage implements OnInit {
     try {
       const response = await axios.get('https://amazon-webscalper-crud.onrender.com/items'); // 
       this.items = response.data;
+      this.filterItems();
       console.log(this.items); 
     } catch (error) {
       console.error('Error al obtener los datos:', error); 
@@ -69,5 +72,14 @@ export class StockMarketPage implements OnInit {
   
   closeImage() {
     this.selectedImage = null;
+  }
+
+  filterItems() {
+    // Filtrar elementos por modelo
+    this.itemsToShow = this.items.filter(item => {
+      return item.modelo.toLowerCase().includes(this.searchModel.toLowerCase());
+    });
+    // Restablecer la paginación al filtrar
+    this.currentPage = 1;
   }
 }
